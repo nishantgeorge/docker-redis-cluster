@@ -37,6 +37,11 @@ RUN (cd /redis && make)
 
 RUN mkdir /redis-conf
 RUN mkdir /redis-data
+RUN mkdir /redis-modules && \
+    git clone --branch v1.0.4 https://github.com/RedisJSON/RedisJSON.git && \
+    cd RedisJSON && \
+    make && \
+    cp ./src/rejson.so /redis-modules/rejson.so
 
 COPY ./redis-cluster.tmpl /redis-conf/redis-cluster.tmpl
 COPY ./redis.tmpl /redis-conf/redis.tmpl
