@@ -6,3 +6,5 @@ cluster-node-timeout 5000
 appendonly yes
 dir /redis-data/${PORT}
 loadmodule /redis-modules/rejson.so
+requirepass "${REQUIREPASS}"
+masterauth "${REQUIREPASS}"
